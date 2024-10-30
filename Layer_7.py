@@ -68,7 +68,7 @@ def sedot_parameters():
 
 # USAGE
 def usage():
-    print(Fore.RED + r'''
+    print(Fore.BLUE + r'''
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv        
 v ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ v
 v ^           ___       ________      ___    ___ _______   ________          ________              ^ v
