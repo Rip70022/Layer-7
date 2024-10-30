@@ -82,15 +82,15 @@ v ^                                 \|___|/                                     
 v ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ v                                                                  
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv                                                                         
 
-    __________________________________________________________________________________________
-    | -s or --host = "www.google.com"                                                        |
-    | -p or --port = 80 > 80 (http) or 443 (htttps)                                          |
-    | -t or --turbo  = 200 > default 200                                                     |
-    | -a or --path = "/" > specific attack                                                   |
+    ________________________________________________________________________________________________
+    | -s or --host = "www.google.com"                                                              |
+    | -p or --port = 80 > 80 (http) or 443 (htttps)                                                |
+    | -t or --turbo  = 200 > default 200                                                           |
+    | -a or --path = "/" > specific attack                                                         |
     | -u or --uri = "/" > location/page where the website won't redirect anymore, e.g.: /index.jsp |
-    | -m or --method = "GET" > GET / POST                                                    |
-    | -d or --data = "" > used only for method = POST, e.g.: user=test&pass=test           |
-    ------------------------------------------------------------------------------------------  
+    | -m or --method = "GET" > GET / POST                                                          |
+    | -d or --data = "" > used only for method = POST, e.g.: user=test&pass=test                   |
+    ------------------------------------------------------------------------------------------------  
     ''')
     sys.exit()
 
