@@ -47,4 +47,7 @@ python Layer_7.py -s www.target.com -p 80 -t 500 -a /login -u /api/login -m POST
 
 ## Warning:
 LEGAL NOTICE: IF YOU `ENGAGE` IN ANY `ILLEGAL` ACTIVITY THE `AUTHOR DOES NOT TAKE ANY RESPONSIBILITY FOR IT`. BY `USING` THIS `SOFTWARE`.
+
+## Author:
+`Shadow_Sadist/Rip70022`
    
