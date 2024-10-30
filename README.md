@@ -28,7 +28,7 @@ This `repository` contains a `Python-based` toolkit for performing `Layer 7` `(a
 ## Usage:
 -  Run the script with the necessary parameters:
    ```bash
-   python layer7_attack.py -s <target_host> -p <target_port> -t <threads> -a <path> -u <uri> -m <method> -d <data>
+   python Layer7_attack.py -s <target_host> -p <target_port> -t <threads> -a <path> -u <uri> -m <method> -d <data>
    ```
    
 ## Parameters:
@@ -42,7 +42,7 @@ This `repository` contains a `Python-based` toolkit for performing `Layer 7` `(a
   
 ## Example:
 ```bash
-python layer7_attack.py -s www.target.com -p 80 -t 500 -a /login -u /api/login -m POST -d "username=test&password=test"
+python Layer7_attack.py -s www.target.com -p 80 -t 500 -a /login -u /api/login -m POST -d "username=test&password=test"
 ```
 
 ## Warning:
